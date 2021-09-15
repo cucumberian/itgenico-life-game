@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block app_content %}
+
+    <a class="btn btn-warning home" href="/">На главную</a>
+    <div class="counter">
+        {{ gameobject.generation }}
+    </div>
+    <a class="btn btn-info refresh" href="">Следующее поколение</a>
+
+    <table class="world">
+        {% for i in range(gameobject.height) %}
+            <tr>
+                {% for j in range(gameobject.width) %}
+                    {% if gameobject.world[i][j] == 1 %}
+                        <td class="cell living-cell"></td>
+                    {% else %}
+                        {% if gameobject.old_world[i][j] == 1 %}
+                            <td class="cell dead-cell"></td>
+                        {% else %}
+                            <td class="cell"></td>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+
+    <script>
+        setInterval(() => window.location.reload(), 500);
+    </script>
+   
+{% endblock %}

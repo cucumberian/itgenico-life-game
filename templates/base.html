@@ -1,0 +1,34 @@
+<!DOCTYPE html5>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>
+            {% block pagetitle %}
+                {{ page_title }}
+            {%endblock %}
+        </title>
+    </head>    
+
+    <body>
+        {% block header %}
+        {% endblock %}
+
+        {% block content %}
+            <div class="content">
+                {% block app_content %}
+                
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block footer %}
+        {% endblock %}
+    </body>
+    
+</html>
+
+{% block scripts %}
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
